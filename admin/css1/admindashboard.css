@@ -1,0 +1,271 @@
+/* Modern Admin Dashboard CSS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #6c5ce7;
+  --secondary: #a29bfe;
+  --accent: #fd79a8;
+  --dark: #2d3436;
+  --light: #f5f6fa;
+  --success: #00b894;
+  --warning: #fdcb6e;
+  --danger: #d63031;
+  --info: #0984e3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Glassmorphism Sidebar */
+.sidebar {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  padding: 20px 0;
+  color: var(--dark);
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: auto;
+}
+
+.sidebar:hover {
+  transform: translateX(0) scale(1.02);
+}
+
+.profile {
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.profile img {
+  /* Essential circle properties */
+  width: 100px;
+  height: 100px; /* Must equal width for perfect circle */
+  border-radius: 50%; /* This makes it circular */
+  object-fit: cover; /* Ensures image fills circle without distortion */
+  
+  /* Styling enhancements */
+  border: 3px solid var(--primary);
+  padding: 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+  
+  /* Additional safeguards */
+  display: block; /* Removes any inline spacing */
+  margin: 0 auto; /* Centers the image if needed */
+  aspect-ratio: 1/1; /* Ensures perfect square ratio */
+}
+.profile img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
+}
+
+.profile h2 {
+  font-size: 1.3rem;
+  margin: 10px 0 5px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.profile p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Animated Navigation */
+nav ul {
+  list-style: none;
+  padding: 0 15px;
+}
+
+nav li {
+  margin-bottom: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+nav li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(108, 92, 231, 0.1), transparent);
+  transition: 0.5s;
+}
+
+nav li:hover::before {
+  left: 100%;
+}
+
+nav li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: var(--dark);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+nav li a:hover {
+  background: rgba(108, 92, 231, 0.1);
+  color: var(--primary);
+  transform: translateX(10px);
+}
+
+nav li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--primary);
+  transform: scaleY(0);
+  transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s;
+}
+
+nav li a:hover::after {
+  transform: scaleY(1);
+  width: 100%;
+  opacity: 0.1;
+}
+
+nav li a i {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+/* Main Content Area */
+.main-content {
+  margin-left: 280px;
+  padding: 30px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+h1 {
+  color: var(--dark);
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+/* Modern Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  transition: all 0.3s;
+}
+
+.card:hover p {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 260px;
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }

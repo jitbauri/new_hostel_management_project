@@ -1,0 +1,208 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Search Form Styles */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.search-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.search-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.search-form input[type="text"] {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.search-form button {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Student Info Styles */
+.student-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.student-info p {
+    margin: 10px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.student-info p:last-child {
+    border-bottom: none;
+}
+
+.student-info strong {
+    display: inline-block;
+    width: 150px;
+    color: #2c3e50;
+}
+
+/* Delete Button Styles */
+.delete-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.delete-form button {
+    padding: 12px 25px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.delete-form button:hover {
+    background-color: #c0392b;
+}
+
+/* Search Results Table Styles */
+.search-results {
+    margin-top: 30px;
+}
+
+.search-results table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.search-results th, .search-results td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-results th {
+    background-color: #3498db;
+    color: white;
+}
+
+.search-results tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.search-results tr:hover {
+    background-color: #f1f1f1;
+}
+
+.search-results button {
+    padding: 8px 15px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-results button:hover {
+    background-color: #c0392b;
+}
+
+/* Message Styles */
+.error {
+    color: #e74c3c;
+    background-color: #fadbd8;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 4px solid #e74c3c;
+}
+
+.success {
+    color: #27ae60;
+    background-color: #d5f5e3;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 4px solid #27ae60;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+    
+    .student-info p {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .student-info strong {
+        width: auto;
+        margin-bottom: 5px;
+    }
+    
+    .search-results table {
+        display: block;
+        overflow-x: auto;
+    }
+}

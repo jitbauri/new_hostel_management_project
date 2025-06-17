@@ -1,0 +1,20 @@
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+form input[type="file"] {
+  margin-bottom: 10px;
+}
+.slider-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.slider-item {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+.success { color: green; }
+.error { color: red; }
