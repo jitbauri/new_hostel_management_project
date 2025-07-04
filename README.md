@@ -17,18 +17,6 @@ Built using:
 - ⚙️ Backend: PHP  
 - 🗄️ Database: MySQL
 
----
-
-## 👥 Team Members
-
-- Jit Bauri (Roll No: 94)
-- Jaydeb Das (Roll No: 93)  
-**College:** Trivenidevi Bhalotia College  
-**Guide:** Subhasis Kumar Chandra  
-**Session:** 2023–2024
-
----
-
 ## 🧩 Key Features
 
 ### 👨‍🎓 Student Dashboard
