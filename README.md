@@ -84,6 +84,3 @@ Built using:
 
 > ✅ SQL dump file is included in the `database/` folder.
 
----
-
-## 🚀 Getting Started
