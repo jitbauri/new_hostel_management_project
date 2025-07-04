@@ -70,5 +70,5 @@ Built using:
 - `notices`
 - `sliders`
 
-> ✅ SQL dump file is included in the `database/` folder.
+> ✅ SQL dump file is included in the `database/` folder
 
