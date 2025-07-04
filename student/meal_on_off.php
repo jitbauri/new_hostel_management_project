@@ -1,22 +1,62 @@
 <?php
 session_start();
 if (!isset($_SESSION['college_id'])) {
-    header("Location: login.php");
+    header("Location: signin.php");
     exit();
 }
 $college_id = $_SESSION['college_id'];
+
+include '../include/dbconnect.php';
+
+$message = ""; // Initialize message
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $date = $_POST['meal_date'];
+    $status = $_POST['status'];
+    $updated_at = date('Y-m-d H:i:s');
+
+    $stmt = $conn->prepare("SELECT * FROM meal_status WHERE college_id = ? AND DATE(updated_at) = ?");
+    $stmt->bind_param("ss", $college_id, $date);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $update = $conn->prepare("UPDATE meal_status SET status = ?, updated_at = ? WHERE college_id = ? AND DATE(updated_at) = ?");
+        $update->bind_param("ssss", $status, $updated_at, $college_id, $date);
+        if ($update->execute()) {
+            $message = "✅ Meal status updated successfully!";
+        } else {
+            $message = "❌ Failed to update meal status.";
+        }
+    } else {
+        $insert = $conn->prepare("INSERT INTO meal_status (college_id, status, updated_at) VALUES (?, ?, ?)");
+        $insert->bind_param("sss", $college_id, $status, $updated_at);
+        if ($insert->execute()) {
+            $message = "✅ Meal status submitted successfully!";
+        } else {
+            $message = "❌ Failed to submit meal status.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Meal On/Off</title>
-    <link rel="stylesheet" href="css3/meal.css">
+    <link rel="stylesheet" href="css3/meal_status.css">
 </head>
 <body>
     <div class="container">
         <h2>Meal Preference</h2>
-        <form action="meal_on_off.php" method="POST">
+
+        <?php if (!empty($message)): ?>
+            <p class="message <?php echo (strpos($message, '✅') !== false) ? 'success' : 'error'; ?>">
+                <?php echo $message; ?>
+            </p>
+        <?php endif; ?>
+
+        <form action="" method="POST">
             <label for="meal_date">Select Date:</label>
             <input type="date" name="meal_date" required>
 
@@ -29,26 +69,5 @@ $college_id = $_SESSION['college_id'];
             <button type="submit" name="submit">Submit</button>
         </form>
     </div>
-
-<?php
-if (isset($_POST['submit'])) {
-    include '../include/dbconnect.php';
-    $date = $_POST['meal_date'];
-    $status = $_POST['status'];
-
-    // Check if already submitted for same date
-    $check = mysqli_query($conn, "SELECT * FROM meal_status WHERE student_id='$college_id' AND meal_date='$date'");
-    if (mysqli_num_rows($check) > 0) {
-        echo "<p class='error'>Meal status already submitted for this date.</p>";
-    } else {
-        $query = "INSERT INTO meal_status (student_id, meal_date, status) VALUES ('$college_id', '$date', '$status')";
-        if (mysqli_query($conn, $query)) {
-            echo "<p class='success'>Meal status submitted successfully!</p>";
-        } else {
-            echo "<p class='error'>Error submitting meal status.</p>";
-        }
-    }
-}
-?>
 </body>
 </html>

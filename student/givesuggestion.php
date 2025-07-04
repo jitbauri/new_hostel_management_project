@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
   <title>Give Suggestion</title>
-  <link rel="stylesheet" href="css3/givesuggestion.css">
+  <link rel="stylesheet" href="css3/give_suggestion.css">
 </head>
 <body>
   <div class="center">

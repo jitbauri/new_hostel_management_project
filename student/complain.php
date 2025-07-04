@@ -5,16 +5,15 @@ if (!isset($_SESSION['college_id'])) {
     exit();
 }
 include ('../include/dbconnect.php');
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $college_id = $_SESSION['college_id'];
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $date = $_POST['date'];
+    $date = $_POST['date'];  // This is the actual value to use
     $category = $_POST['category'];
 
     $stmt = $conn->prepare("INSERT INTO complaints (college_id, title, description, complain_date, category) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $college_id, $title, $description, $complain_date, $category);
+    $stmt->bind_param("sssss", $college_id, $title, $description, $date, $category);
 
     if ($stmt->execute()) {
         $message = "Complaint registered successfully.";
@@ -24,13 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
 }
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Register Complaint</title>
-    <link rel="stylesheet" href="css3/register_complain.css">
+    <link rel="stylesheet" href="css3/complain.css">
 </head>
 <body>
     <div class="container">

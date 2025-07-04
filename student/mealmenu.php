@@ -7,20 +7,15 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Fetch all meal data ordered by day and meal type
-$sql = "SELECT day, 
-       MAX(CASE WHEN meal_type = 'Lunch' THEN menu_items END) AS lunch,
-       MAX(CASE WHEN meal_type = 'Dinner' THEN menu_items END) AS dinner
-       FROM meal_menu
-       GROUP BY day
-       ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
-
+// Fetch all weekly meals
+$sql = "SELECT * FROM weekly_menu ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
 $result = mysqli_query($conn, $sql);
 
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,13 +142,14 @@ if (!$result) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                            <tr>
-                                <td class="day-column"><?php echo htmlspecialchars($row['day']); ?></td>
-                                <td><?php echo htmlspecialchars($row['lunch']); ?></td>
-                                <td><?php echo htmlspecialchars($row['dinner']); ?></td>
-                            </tr>
-                        <?php endwhile; ?>
+                       <?php while ($row = mysqli_fetch_assoc($result)): ?>
+    <tr>
+        <td class="day-column"><?php echo htmlspecialchars($row['day']); ?></td>
+        <td><?php echo htmlspecialchars($row['lunch_menu']); ?></td>
+        <td><?php echo htmlspecialchars($row['dinner_menu']); ?></td>
+    </tr>
+<?php endwhile; ?>
+
                     </tbody>
                 </table>
             <?php else: ?>

@@ -56,52 +56,60 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Begin transaction
             $conn->begin_transaction();
 
-            // 1. First delete from students
+            // 1. First get student data
+            $stmt = $conn->prepare("SELECT * FROM students WHERE college_id = ?");
+            $stmt->bind_param("s", $college_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $student = $result->fetch_assoc();
+            $stmt->close();
+
+            if (!$student) {
+                throw new Exception("Student not found.");
+            }
+
+            // 2. Insert into alumni with correct column names
+            $stmt = $conn->prepare("INSERT INTO alumni (
+                name, college_id, university_id, guardian_name, 
+                mobile_number, guardian_mobile_number, course, 
+                photo, room_number, left_on
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+            
+            // Provide default values for potentially missing fields
+            $name = $student['name'] ?? '';
+            $college_id = $student['college_id'] ?? '';
+            $university_id = $student['university_id'] ?? '';
+            $guardian_name = $student['guardian_name'] ?? '';
+            $mobile_number = $student['mobile_number'] ?? '';
+            $guardian_mobile_number = $student['guardian_mobile_number'] ?? '';
+            $course = $student['course'] ?? '';
+            $photo = $student['photo'] ?? 'default.jpg';
+            $room_number = $student['room_number'] ?? '';
+            
+            $stmt->bind_param("sssssssss", 
+                $name,
+                $college_id,
+                $university_id,
+                $guardian_name,
+                $mobile_number,
+                $guardian_mobile_number,
+                $course,
+                $photo,
+                $room_number
+            );
+            
+            if (!$stmt->execute()) {
+                throw new Exception("Failed to move to alumni: " . $stmt->error);
+            }
+            $stmt->close();
+
+            // 3. Delete from students
             $stmt = $conn->prepare("DELETE FROM students WHERE college_id = ?");
             $stmt->bind_param("s", $college_id);
             if (!$stmt->execute()) {
                 throw new Exception("Failed to delete student: " . $stmt->error);
             }
             $stmt->close();
-
-            // 2. Check if student exists in alumni first
-            $stmt = $conn->prepare("SELECT college_id FROM alumni WHERE college_id = ?");
-            $stmt->bind_param("s", $college_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            if ($result->num_rows === 0) {
-                // 3. Get student data and insert into alumni
-                $stmt = $conn->prepare("SELECT * FROM students WHERE college_id = ?");
-                $stmt->bind_param("s", $college_id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $student = $result->fetch_assoc();
-                $stmt->close();
-
-                if ($student) {
-                    $stmt = $conn->prepare("INSERT INTO alumni (
-                        name, college_id, phone, guardian_phone, 
-                        room_number, course, photo, password
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                    
-                    $stmt->bind_param("ssssssss", 
-                        $student['name'],
-                        $student['college_id'],
-                        $student['mobile_number'],
-                        $student['guardian_mobile_number'],
-                        $student['room_number'],
-                        $student['course'],
-                        $student['photo'],
-                        $student['password']
-                    );
-                    
-                    if (!$stmt->execute()) {
-                        throw new Exception("Failed to move to alumni: " . $stmt->error);
-                    }
-                    $stmt->close();
-                }
-            }
 
             $conn->commit();
             $delete_success = "Student deleted and moved to alumni successfully.";
@@ -154,16 +162,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <?php if ($student): ?>
         <div class="student-info">
-            <p><strong>Name:</strong> <?php echo htmlspecialchars($student['name']); ?></p>
-            <p><strong>College ID:</strong> <?php echo htmlspecialchars($student['college_id']); ?></p>
+            <p><strong>Name:</strong> <?php echo htmlspecialchars($student['name'] ?? 'N/A'); ?></p>
+            <p><strong>College ID:</strong> <?php echo htmlspecialchars($student['college_id'] ?? 'N/A'); ?></p>
             <p><strong>Mobile:</strong> <?php echo htmlspecialchars($student['mobile_number'] ?? 'N/A'); ?></p>
             <p><strong>Guardian Mobile:</strong> <?php echo htmlspecialchars($student['guardian_mobile_number'] ?? 'N/A'); ?></p>
-            <p><strong>Course:</strong> <?php echo htmlspecialchars($student['course']); ?></p>
+            <p><strong>Course:</strong> <?php echo htmlspecialchars($student['course'] ?? 'N/A'); ?></p>
             <p><strong>Room No:</strong> <?php echo htmlspecialchars($student['room_number'] ?? 'N/A'); ?></p>
         </div>
 
         <form method="POST" class="delete-form">
-            <input type="hidden" name="college_id" value="<?php echo htmlspecialchars($student['college_id']); ?>">
+            <input type="hidden" name="college_id" value="<?php echo htmlspecialchars($student['college_id'] ?? ''); ?>">
             <button type="submit" name="delete" onclick="return confirm('Are you sure to delete this student?')">Delete and Move to Alumni</button>
         </form>
     <?php elseif (!empty($students)): ?>
@@ -182,13 +190,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <tbody>
                     <?php foreach ($students as $s): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($s['name']); ?></td>
-                            <td><?php echo htmlspecialchars($s['college_id']); ?></td>
-                            <td><?php echo htmlspecialchars($s['course']); ?></td>
+                            <td><?php echo htmlspecialchars($s['name'] ?? 'N/A'); ?></td>
+                            <td><?php echo htmlspecialchars($s['college_id'] ?? 'N/A'); ?></td>
+                            <td><?php echo htmlspecialchars($s['course'] ?? 'N/A'); ?></td>
                             <td><?php echo htmlspecialchars($s['room_number'] ?? 'N/A'); ?></td>
                             <td>
                                 <form method="POST" style="display: inline;">
-                                    <input type="hidden" name="college_id" value="<?php echo htmlspecialchars($s['college_id']); ?>">
+                                    <input type="hidden" name="college_id" value="<?php echo htmlspecialchars($s['college_id'] ?? ''); ?>">
                                     <button type="submit" name="delete" onclick="return confirm('Are you sure to delete this student?')">Delete</button>
                                 </form>
                             </td>

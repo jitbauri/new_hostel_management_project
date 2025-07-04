@@ -105,8 +105,8 @@ body {
 }
 
 .profile-pic {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #1e3c72;
@@ -224,4 +224,42 @@ body {
 
 .student-card {
     animation: fadeIn 0.5s ease-out;
+}
+
+ /*new  */
+.student-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1.05rem;
+}
+
+.student-info-table th,
+.student-info-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.student-info-table th {
+    background-color: #f1f3f5;
+    color: #1e3c72;
+    font-weight: 600;
+    width: 200px;
+}
+
+.student-info-table td {
+    color: #333;
+}
+
+.student-info-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+    .student-info-table th,
+    .student-info-table td {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
 }

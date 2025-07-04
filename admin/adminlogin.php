@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="<?php echo $base_path; ?>/css1/adminlogin.css">
   <script>
     function goBack() {
-      window.location.href = "<?php echo $base_path; ?>/index.php";
+      window.location.href = "../index.php";
     }
   </script>
 </head>

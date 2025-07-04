@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="css3/signin.css">
   <script>
     function goBack() {
-      window.location.href = "index.php";
+      window.location.href = "../index.php";
     }
   </script>
 </head>

@@ -107,7 +107,7 @@ if (!isset($_SESSION['admin_college_id'])) {
           <li><a href="pending_approval.php">Pending Approvals</a></li>
           <li><a href="manage_due.php">Manage Fees</a></li>
           <li><a href="manage_slider.php">Manage Slider</a></li>
-          <li><a href="notices.php">Manage Notices</a></li>
+          <li><a href="#" onclick=" alert('Update Coming Soon......!')";>Manage Notices</a></li>
           <li><a href="admin_manage.php">Manage Admin</a></li>
           <li><a href="manage_manager.php">Manage Manager</a></li>
           <li><a href="alumni.php">Alumni</a></li>
@@ -134,43 +134,43 @@ if (!isset($_SESSION['admin_college_id'])) {
           <p id="total-complaints">--</p>
         </div>
         <div class="card">
-          <h3>Total Suggestions</h3>
+          <h3>Total visitors</h3>
           <p id="total-suggestions">--</p>
         </div>
       </section>
     </main>
   </div>
   <script nonce="<?php echo bin2hex(random_bytes(16)); ?>">
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('../admin_stats.php', {
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
-        }
-      })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then(data => {
-        if (typeof data === 'object') {
-          document.getElementById('total-students').textContent = data.students || '--';
-          document.getElementById('pending-approvals').textContent = data.pending || '--';
-          document.getElementById('total-complaints').textContent = data.complaints || '--';
-          document.getElementById('total-suggestions').textContent = data.suggestions || '--';
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching stats:', error);
-      });
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('admin_stats.php', {
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+    .then(function (res) {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then(function (data) {
+      if (typeof data === 'object') {
+        document.getElementById('total-students').textContent = data.students ?? '--';
+        document.getElementById('pending-approvals').textContent = data.pending ?? '--';
+        document.getElementById('total-complaints').textContent = data.complaints ?? '--';
+        document.getElementById('total-suggestions').textContent = data.visitors ?? '--';
+      } else {
+        console.warn('Unexpected data format:', data);
+      }
+    })
+    .catch(function (error) {
+      console.error('Error fetching admin stats:', error);
     });
-
-  </script>
+  });
+</script>
   <script src="loder.js"></script>
-  </script>
 <script>
 // Prevent back-button after logout
 window.history.pushState(null, null, document.URL);

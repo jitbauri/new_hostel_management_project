@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Memories Gallery</title>
+    <title>Hoostel Management System Index Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ===== Global Styles ===== */
@@ -61,75 +60,6 @@
             max-width: 700px;
             margin: 0 auto;
             animation: fadeIn 1.5s ease;
-        }
-
-
-        /* ===== Login Dropdown ===== */
-        .login-dropdown {
-            padding-top: 21px;
-            position: relative;
-            display: inline-block;
-            margin-left: 15px;
-        }
-
-        .login-dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 240px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .login-dropdown-content a {
-            color: #333;
-            padding: 12px 16px;
-            display: block;
-            transition: all 0.3s ease;
-        }
-
-        .login-dropdown-content a {
-            color: #333;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 500;
-            text-decoration: none;
-            /* removes underline */
-            transition: all 0.3s ease;
-            font-family: 'Encode Sans Expanded', sans-serif;
-            border-bottom: 1px solid #eee;
-        }
-
-        .login-dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-        .login-dropdown-content a:hover {
-            background-color: #1d2b5a;
-            color: white;
-            padding-left: 20px;
-        }
-
-        .login-option i {
-            width: 20px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .login-option i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .show-dropdown {
-            display: block;
-            animation: fadeIn 0.3s;
         }
 
         /* ===== Header ===== */
@@ -212,34 +142,154 @@
             font-size: 1.5rem;
         }
 
+        /* ===== Login Dropdown ===== */
+    .login-dropdown {
+  padding-top: 21px;
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.login-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 240px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.login-dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.login-dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  text-decoration: none; /* removes underline */
+  transition: all 0.3s ease;
+  font-family: 'Encode Sans Expanded', sans-serif;
+  border-bottom: 1px solid #eee;
+}
+
+.login-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.login-dropdown-content a:hover {
+  background-color: #1d2b5a;
+  color: white;
+  padding-left: 20px;
+}
+
+.login-option i {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.login-option i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.show-dropdown {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  animation: fadeInUp 1s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: transparent;
+  border-color: var(--secondary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
         /* ===== Hero Section ===== */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('images/hostel.jpg') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
+     .HeroSlider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-        .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
-        }
+.slider-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease;
-        }
+.slider-image {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            animation: fadeIn 1.5s ease;
-        }
+
+
+/* Buttons */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  font-size: 24px;
+  padding: 12px;
+  border-radius: 30%;
+  cursor: pointer;
+  z-index: 3;
+  border: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.slider-arrow:hover {
+  background-color: #01bf71;
+  color: white;
+}
+
+.slider-arrow-left {
+  left: 20px;
+}
+
+.slider-arrow-right {
+  right: 20px;
+}
+
+/* button for color*/
 
         .btn {
             display: inline-block;
@@ -263,284 +313,125 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* ===== Gallery Section ===== */
-        .gallery {
-            background-color: white;
-        }
+/* ===== Info Sections ===== */
+.InfoContainer {
+  padding: 100px 0;
+  background: #f9f9f9;
+}
 
-        .gallery-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            animation: fadeIn 1s ease;
-        }
+.InfoWrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-        .filter-btn {
-            background: none;
-            border: none;
-            color: var(--dark-color);
-            padding: 10px 20px;
-            margin: 0 10px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            transition: var(--transition);
-        }
+.InfoRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+}
 
-        .filter-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary-color);
-            transition: var(--transition);
-        }
+.Column1,
+.Column2 {
+  padding: 0 15px;
+}
 
-        .filter-btn:hover::after {
-            width: 100%;
-        }
+.TextWrapper {
+  max-width: 540px;
+  padding-bottom: 60px;
+}
 
-        .filter-btn.active {
-            color: var(--secondary-color);
-        }
+.TopLine {
+  color: #01bf71;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
 
-        .filter-btn.active::after {
-            width: 100%;
-        }
+.Heading {
+  margin-bottom: 24px;
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 600;
+  color: #010606;
+}
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
+.Subtitle {
+  max-width: 440px;
+  margin-bottom: 35px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #010606;
+}
 
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            height: 250px;
-        }
+.BtnWrap {
+  display: flex;
+  justify-content: flex-start;
+}
 
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
+/* IMAGE WRAP STYLING */
+.ImgWrap {
+  max-width: 555px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
 
-        .gallery-item img,
-        .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
+/* IMAGE ANIMATION + HOVER EFFECT */
+.ImgWrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  transform: translateX(50px);
+  opacity: 0;
+  animation: fadeSlideIn 1s ease-out forwards;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
 
-        .gallery-item:hover img,
-        .gallery-item:hover video {
-            transform: scale(1.1);
-        }
+.ImgWrap img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
 
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 1;
-        }
+/* KEYFRAMES FOR ENTRY ANIMATION */
+@keyframes fadeSlideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Optional: Responsive for mobile view */
+@media screen and (max-width: 768px) {
+  .InfoRow {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
+  .BtnWrap {
+    justify-content: center;
+  }
 
-        .item-info {
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            color: white;
-            z-index: 2;
-            transition: var(--transition);
-        }
+  .TextWrapper {
+    padding-bottom: 30px;
+  }
 
-        .gallery-item:hover .item-info {
-            bottom: 0;
-        }
+  .Heading {
+    font-size: 36px;
+  }
 
-        .item-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: var(--transition);
-        }
+  .Subtitle {
+    font-size: 16px;
+  }
+}
 
-        .item-info p {
-            font-size: 0.9rem;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: var(--transition);
-            transition-delay: 0.1s;
-        }
-
-        .gallery-item:hover .item-info h3,
-        .gallery-item:hover .item-info p {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .video-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 3rem;
-            opacity: 0.8;
-            z-index: 2;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .video-icon {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-
-        /* ===== Memories Section ===== */
-        .memories {
-            background-color: #f5f7fa;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 0;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 10px;
-        }
-
-        .memory {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            animation: fadeIn 1s ease;
-        }
-
-        .memory:nth-child(odd) {
-            left: 0;
-        }
-
-        .memory:nth-child(even) {
-            left: 50%;
-        }
-
-        .memory-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .memory-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .memory-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 30px;
-            z-index: 1;
-            transform: rotate(45deg);
-            background-color: white;
-        }
-
-        .memory:nth-child(odd) .memory-content::after {
-            right: -10px;
-        }
-
-        .memory:nth-child(even) .memory-content::after {
-            left: -10px;
-        }
-
-        .memory h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .memory .date {
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .memory .date i {
-            margin-right: 8px;
-        }
-
-        .memory .memory-photos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .memory .memory-photos img {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .memory .memory-photos img:hover {
-            transform: scale(1.1);
-        }
-
-        .memory .dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--secondary-color);
-            border-radius: 50%;
-            top: 30px;
-            z-index: 2;
-        }
-
-        .memory:nth-child(even) .dot {
-            left: -10px;
-        }
+    
 
         /* ===== Testimonials Section ===== */
         .testimonials {
@@ -548,8 +439,7 @@
             color: white;
         }
 
-        .section-title h2,
-        .section-title p {
+        .section-title h2, .section-title p {
             color: white;
         }
 
@@ -559,13 +449,11 @@
             scroll-snap-type: x mandatory;
             gap: 30px;
             padding: 20px 0;
-            scrollbar-width: none;
-            /* Firefox */
+            scrollbar-width: none; /* Firefox */
         }
 
         .testimonial-container::-webkit-scrollbar {
-            display: none;
-            /* Chrome, Safari, Opera */
+            display: none; /* Chrome, Safari, Opera */
         }
 
         .testimonial-card {
@@ -724,13 +612,8 @@
 
         /* ===== Animations ===== */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes fadeInDown {
@@ -738,7 +621,6 @@
                 opacity: 0;
                 transform: translateY(-30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -750,7 +632,6 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -758,17 +639,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         /* ===== Responsive Styles ===== */
@@ -872,9 +745,7 @@
         }
     </style>
 </head>
-
 <body>
-
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -892,145 +763,69 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="login-dropdown">
-                <button type="button" class="btn login-main-btn" onclick="toggleLoginDropdown(event)">
-                    Login <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="login-dropdown-content" id="loginDropdown">
-                    <a href="student/signin.php" class="login-option"><i class="fas fa-user-graduate"></i> Student
-                        Login</a>
-                    <a href="manager/manager_login.php" class="login-option"><i class="fas fa-user-tie"></i> Manager
-                        Login</a>
-                    <a href="admin/adminlogin.php" class="login-option"><i class="fas fa-user-shield"></i> Admin
-                        Login</a>
-                    <a href="https://tdbcollege.in/student_login.aspx" class="login-option"><i
-                            class="fas fa-user-graduate"></i> College Student Login</a>
-                </div>
-            </div>
+  <button type="button" class="btn login-main-btn" onclick="toggleLoginDropdown(event)">
+    Login <i class="fas fa-chevron-down"></i>
+  </button>
+  <div class="login-dropdown-content" id="loginDropdown">
+    <a href="student/signin.php" class="login-option"><i class="fas fa-user-graduate"></i> Student Login</a>
+    <a href="manager/manager_login.php" class="login-option"><i class="fas fa-user-tie"></i> Manager Login</a>
+    <a href="admin/adminlogin.php" class="login-option"><i class="fas fa-user-shield"></i> Admin Login</a>
+    <a href="https://tdbcollege.in/student_login.aspx" class="login-option"><i class="fas fa-user-graduate"></i> College Student Login</a>
+  </div>
+</div>
 
         </div>
     </header>
 
-
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Our Hostel Memories</h1>
-            <p>Relive the unforgettable moments, friendships, and adventures from our hostel days through this
-                collection of photos and videos.</p>
-            <a href="#gallery" class="btn">Explore Gallery</a>
+<div class="HeroContainer">
+  <div class="HeroSlider">
+    <div class="slider-wrapper">
+      <div class="slider-dots"></div>
+      <?php
+      require_once 'include/dbConnect.php';
+      $sql = "SELECT * FROM slider_images ORDER BY uploaded_at DESC";
+      $result = $conn->query($sql);
+      if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          echo '<div class="slider-image" style="background-image: url(\'uploads/slider/' . htmlspecialchars($row['image_path']) . '\')"></div>';
+        }
+      } else {
+        echo '<div class="slider-image" style="background-image: url(\'images/default.jpg\')"></div>';
+      }
+      $conn->close();
+      ?>
+    </div>
+    <button class="slider-arrow slider-arrow-left">&#10094;</button>
+    <button class="slider-arrow slider-arrow-right">&#10095;</button>
+  </div>
+</div>
+
+    <!-- infosection1 -->
+<div class="InfoContainer" id="about">
+  <div class="InfoWrapper">
+    <div class="InfoRow">
+      <!-- Left Column - Text -->
+      <div class="Column1">
+        <div class="TextWrapper">
+          <p class="TopLine">World class facilities</p>
+          <h1 class="Heading">Best facilities with less prices</h1>
+          <p class="Subtitle">Cherish your hostel life with our hostels Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, atque.</p>
+          <div class="BtnWrap">
+            <button type="button" name="button" class="btn" style="color:black" onclick="change1()">Get Started</button>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Hostel Gallery</h2>
-                <p>Browse through our collection of photos and videos capturing the essence of hostel life - from
-                    late-night study sessions to fun-filled events.</p>
-            </div>
-
-            <div class="gallery-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="room">Room</button>
-                <button class="filter-btn" data-filter="events">Events</button>
-                <button class="filter-btn" data-filter="friends">Friends</button>
-                <button class="filter-btn" data-filter="campus">Campus</button>
-            </div>
-
-            <div class="gallery-grid">
-                <!-- Photo Items -->
-                <div class="gallery-item" data-category="friend">
-                    <img src="images/hos1.jpg"
-                        alt="sham_mandir">
-                    <div class="item-info">
-                        <h3>Sham Mandir</h3>
-                        <p>Sham mandir with hostel friends</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="friends">
-                    <img src="images/hos2.jpg">
-                    <div class="item-info">
-                        <h3>Swaraswati Puja</h3>
-                        <p>Swaraswati Puja Tother in 2023</p>
-                    </div>
-                </div>
-
-                <!-- Video Items -->
-                <div class="gallery-item" cass="gallery-item video"data-category="campus">
-                    <video autoplay muted loop>
-                        <source
-                            src="videos/new_hos.mp4"
-                            type="video/mp4">
-                    </video>
-                    <div class="video-icon">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="item-info">
-                        <h3>Our Hostel</h3>
-                        <p>Hostel Campus View</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="campus">
-                    <img src="images/col1.jpg"
-                        alt="Campus View">
-                    <div class="item-info">
-                        <h3>Campus View</h3>
-                        <p>The beautiful College Campus view </p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="events">
-                    <img src="images/hos10.jpg">
-                    <div class="item-info">
-                        <h3>College Cultural Fest</h3>
-                        <p>Hostel team winning first prize in College Stall</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="images/hos11.jpg">
-                    <div class="item-info">
-                        <h3>College Cultural Fest</h3>
-                        <p>Hostel Tall in College Fest</p>
-                    </div>
-                </div>
-         
-          <div class="gallery-item" data-category="friends">
-                    <img src="images/hos7.jpg">
-                    <div class="item-info">
-                        <h3>Weekend Outing</h3>
-                        <p>Digha Tour From Hostel </p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="room">
-                    <img src="images/room.jpg">
-                    <div class="item-info">
-                        <h3> HostelRoom </h3>
-                        <p> well-furnished room and study Environment</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="events">
-                    <img src="images/hos5.jpg">
-                    <div class="item-info">
-                        <h3>Sourav Da</h3>
-                        <p>Sourav Da last day in Our Hostel</p>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="events">
-                    <img src="images/hos6.jpg">
-                    <div class="item-info">
-                        <h3>Subhadeep Da</h3>
-                        <p>Subhadeep Da farewell Partyl</p>
-                    </div>
-                </div>
-            </div>
+      <!-- Right Column - Image -->
+      <div class="Column2">
+        <div class="ImgWrap">
+          <img src="images/hostel.jpg" alt="Hostel Room" class="InfoImg" />
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
@@ -1043,8 +838,7 @@
             <div class="testimonial-container">
                 <div class="testimonial-card">
                     <div class="quote">
-                        The hostel wasn't just a place to sleep - it was where I found my second family. The late-night
-                        talks, shared meals, and endless support got me through college.
+                        The hostel wasn't just a place to sleep - it was where I found my second family. The late-night talks, shared meals, and endless support got me through college.
                     </div>
                     <div class="testimonial-author">
                         <img src="images/jaydeb.jpg" alt="Sarah K.">
@@ -1057,22 +851,20 @@
 
                 <div class="testimonial-card">
                     <div class="quote">
-                        I'll never forget the birthday surprises we planned for each other or how we'd all come together
-                        during tough times. Hostel life taught me the true meaning of friendship.
+                        I'll never forget the birthday surprises we planned for each other or how we'd all come together during tough times. Hostel life taught me the true meaning of friendship.
                     </div>
                     <div class="testimonial-author">
                         <img src="images/subhadeep_da.jpg" alt="Raj P.">
                         <div class="author-info">
-                            <h4>Subhadeep Das</h4>
-                            <p>Room 25, 2023-2027</p>
+                            <h4>SubbhaDeep Das</h4>
+                            <p>Room 25, 2023-2025</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="quote">
-                        The hostel food was terrible, but the company made up for it! I miss our impromptu music
-                        sessions and the way we'd all help each other with assignments at the last minute.
+                        The hostel food was terrible, but the company made up for it! I miss our impromptu music sessions and the way we'd all help each other with assignments at the last minute.
                     </div>
                     <div class="testimonial-author">
                         <img src="images/jit_profile.gif" alt="Amit S.">
@@ -1092,14 +884,11 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <h3>About Our Hostel</h3>
-                    <p>Block C was more than just a building - it was our home for those formative college years where
-                        lifelong friendships were forged.</p>
+                    <p>Block C was more than just a building - it was our home for those formative college years where lifelong friendships were forged.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/tdbcollege.in"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/channel/UC_hRiLOhocQ0o1_hUMEkUAQ/videos"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://tdbcollege.ac.in/#"><i class="fas fa-graduation-cap"
-                                style="font-size: 30px; "></i></a>
+                        <a href="https://www.youtube.com/channel/UC_hRiLOhocQ0o1_hUMEkUAQ/videos"><i class="fab fa-youtube"></i></a>
+                        <a href="https://tdbcollege.ac.in/#"><i class="fas fa-graduation-cap" style="font-size: 30px; "></i></a>
                     </div>
                 </div>
 
@@ -1116,8 +905,7 @@
                 <div class="footer-col">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i>Raniganj, Paschim Bardhaman,Pin: 713347</a>
-                        </li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i>Raniganj, Paschim Bardhaman,Pin: 713347</a></li>
                         <li><a href="#"><i class="fas fa-phone"></i> +0341-2444275 / 2444780</a></li>
                         <li><a href="#"><i class="fas fa-envelope"></i>tdbcollegeraniganj@gmail.com</a></li>
                     </ul>
@@ -1126,9 +914,7 @@
                 <div class="footer-col">
                     <h3>Reunion Plans</h3>
                     <p>We're planning this year for reunion in 2025 . Stay tuned for details!</p>
-                    <a href="#" class="btn"
-                        style="display: inline-block; margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;">Get
-                        Updates</a>
+                    <a href="#" class="btn" style="display: inline-block; margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;" onclick=" alert('Update Coming Soon......!');">Get Updates</a>
                 </div>
             </div>
 
@@ -1137,6 +923,7 @@
             </div>
         </div>
     </footer>
+
     <script>
         // Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
@@ -1210,7 +997,7 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
 
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
@@ -1222,7 +1009,7 @@
         // Animation on scroll
         function animateOnScroll() {
             const memories = document.querySelectorAll('.memory');
-
+            
             memories.forEach(memory => {
                 const memoryPosition = memory.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.3;
@@ -1237,25 +1024,92 @@
         // Initial check in case elements are already in view
         animateOnScroll();
     </script>
+
     <script>
-        function toggleLoginDropdown(event) {
-            event.stopPropagation(); // Prevent window click from immediately closing it
-            document.getElementById("loginDropdown").classList.toggle("show-dropdown");
-        }
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".slider-wrapper");
+  const slides = document.querySelectorAll(".slider-image");
+  const leftBtn = document.querySelector(".slider-arrow-left");
+  const rightBtn = document.querySelector(".slider-arrow-right");
+  const dotsContainer = document.querySelector(".slider-dots");
+  let current = 0;
+  let total = slides.length;
 
-        // Close dropdown when clicking outside
-        window.onclick = function (event) {
-            const dropdown = document.getElementById("loginDropdown");
-            if (dropdown && dropdown.classList.contains("show-dropdown")) {
-                dropdown.classList.remove("show-dropdown");
-            }
-        };
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("slider-dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      current = index;
+      updateSlide();
+      resetInterval();
+    });
+    dotsContainer.appendChild(dot);
+  });
 
-        // Prevent dropdown from closing when clicking inside
-        document.getElementById("loginDropdown").addEventListener("click", function (e) {
-            e.stopPropagation();
-        }); 
-    </script>
+  const dots = document.querySelectorAll(".slider-dot");
+
+  function updateSlide() {
+    wrapper.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[current].classList.add("active");
+  }
+
+  function nextSlide() {
+    current = (current + 1) % total;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    current = (current - 1 + total) % total;
+    updateSlide();
+  }
+
+  let interval = setInterval(nextSlide, 4000);
+
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 4000);
+  }
+
+  rightBtn.addEventListener("click", () => {
+    nextSlide();
+    resetInterval();
+  });
+
+  leftBtn.addEventListener("click", () => {
+    prevSlide();
+    resetInterval();
+  });
+
+  // Initial Slide
+  updateSlide();
+});
+</script>
+
+<script>
+  function toggleLoginDropdown(event) {
+    event.stopPropagation(); // Prevent window click from immediately closing it
+    document.getElementById("loginDropdown").classList.toggle("show-dropdown");
+  }
+
+  // Close dropdown when clicking outside
+  window.onclick = function(event) {
+    const dropdown = document.getElementById("loginDropdown");
+    if (dropdown && dropdown.classList.contains("show-dropdown")) {
+      dropdown.classList.remove("show-dropdown");
+    }
+  };
+
+  // Prevent dropdown from closing when clicking inside
+  document.getElementById("loginDropdown").addEventListener("click", function(e) {
+    e.stopPropagation();
+  }); 
+    function change1(){
+      window.location.href = "facility.php";
+    }
+</script>
+
 </body>
-
 </html>

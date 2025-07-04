@@ -9,7 +9,7 @@ require_once __DIR__ . '/../include/dbConnect.php';
 
 // Fetch complaints with correct column names matching your database
 $complaints = [];
-$result = $conn->query("SELECT college_id, title, description, category, complain_date, status, created_at FROM complaints ORDER BY created_at DESC");
+$result = $conn->query("SELECT id, college_id, title, description, category, complain_date, status, created_at FROM complaints ORDER BY created_at DESC");
 if ($result === false) {
     die("Error fetching complaints: " . $conn->error);
 }
@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
 
 // Fetch suggestions with proper column names
 $suggestions = [];
-$result = $conn->query("SELECT college_id, suggestion, submitted_at FROM suggestions ORDER BY submitted_at DESC");
+$result = $conn->query("SELECT id, college_id, suggestion, status, submitted_at FROM suggestions ORDER BY submitted_at DESC");
 if ($result === false) {
     die("Error fetching suggestions: " . $conn->error);
 }
@@ -52,7 +52,7 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Admin Feedback & Visitor Records</title>
     <link rel="stylesheet" href="css1/feed_visitor.css">
-       <style>
+    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
@@ -113,6 +113,7 @@ $conn->close();
             border-radius: 5px;
         }
     </style>
+</head>
 <body>
 <div class="container">
     <h1>Admin Dashboard: Feedback & Visitors</h1>
@@ -123,12 +124,14 @@ $conn->close();
         <?php if (!empty($complaints)): ?>
             <?php foreach ($complaints as $complaint): ?>
                 <div class="box complaint">
+                    <p><strong>ID:</strong> <?= htmlspecialchars($complaint['id'] ?? 'N/A') ?></p>
                     <p><strong>College ID:</strong> <?= htmlspecialchars($complaint['college_id'] ?? 'N/A') ?></p>
                     <p><strong>Title:</strong> <?= htmlspecialchars($complaint['title'] ?? '') ?></p>
                     <p><strong>Description:</strong> <?= htmlspecialchars($complaint['description'] ?? '') ?></p>
                     <p><strong>Category:</strong> <?= htmlspecialchars($complaint['category'] ?? '') ?></p>
                     <p><strong>Date:</strong> <?= htmlspecialchars($complaint['complain_date'] ?? '') ?></p>
                     <p><strong>Status:</strong> <?= htmlspecialchars($complaint['status'] ?? 'Pending') ?></p>
+                    <p><strong>Created At:</strong> <?= htmlspecialchars($complaint['created_at'] ?? '') ?></p>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -136,14 +139,16 @@ $conn->close();
         <?php endif; ?>
     </section>
 
-     <!-- Suggestions Section -->
+    <!-- Suggestions Section -->
     <section>
         <h2>🟩 Suggestions</h2>
         <?php if (!empty($suggestions)): ?>
             <?php foreach ($suggestions as $suggestion): ?>
                 <div class="box suggestion">
+                    <p><strong>ID:</strong> <?= htmlspecialchars($suggestion['id'] ?? 'N/A') ?></p>
                     <p><strong>College ID:</strong> <?= htmlspecialchars($suggestion['college_id'] ?? 'N/A') ?></p>
                     <p><strong>Suggestion:</strong> <?= htmlspecialchars($suggestion['suggestion'] ?? '') ?></p>
+                    <p><strong>Status:</strong> <?= htmlspecialchars($suggestion['status'] ?? 'Pending') ?></p>
                     <p><strong>Submitted At:</strong> <?= htmlspecialchars($suggestion['submitted_at'] ?? '') ?></p>
                 </div>
             <?php endforeach; ?>
@@ -158,13 +163,15 @@ $conn->close();
         <?php if (!empty($visitors)): ?>
             <?php foreach ($visitors as $visitor): ?>
                 <div class="box visitor">
-                    <p><strong>Student Reg No:</strong> <?= htmlspecialchars($visitor['student_regno'] ?? 'N/A') ?></p>
+                    <p><strong>College ID:</strong> <?= htmlspecialchars($visitor['college_id'] ?? 'N/A') ?></p>
                     <p><strong>Visitor Name:</strong> <?= htmlspecialchars($visitor['visitor_name'] ?? '') ?></p>
                     <p><strong>Relation:</strong> <?= htmlspecialchars($visitor['relation'] ?? '') ?></p>
                     <p><strong>Mobile:</strong> <?= htmlspecialchars($visitor['mobile'] ?? '') ?></p>
                     <p><strong>Visit Date:</strong> <?= htmlspecialchars($visitor['visit_date'] ?? '') ?></p>
                     <p><strong>Visit Time:</strong> <?= htmlspecialchars($visitor['visit_time'] ?? '') ?></p>
                     <p><strong>Purpose:</strong> <?= htmlspecialchars($visitor['purpose'] ?? '') ?></p>
+                    <p><strong>Status:</strong> <?= htmlspecialchars($visitor['status'] ?? 'Pending') ?></p>
+                    <p><strong>Approved By:</strong> <?= htmlspecialchars($visitor['approved_by'] ?? 'Not approved yet') ?></p>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
